@@ -1,0 +1,31 @@
+{
+  "name": "retail-inventory-backend",
+  "version": "1.0.0",
+  "description": "Optimized Retail Inventory Management System - Backend API",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "seed": "node database/seed.js",
+    "dev": "node --watch server.js"
+  },
+  "keywords": [
+    "inventory",
+    "retail",
+    "management",
+    "express",
+    "sqlite"
+  ],
+  "author": "3rd Year CSE & HCL Trainee Guidance",
+  "license": "ISC",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
+    "jsonwebtoken": "^9.0.2",
+    "morgan": "^1.10.0"
+  },
+  "engines": {
+    "node": ">=22.5.0"
+  }
+}

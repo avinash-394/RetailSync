@@ -1,0 +1,5 @@
+node_modules/
+.env
+*.log
+# Do not ignore database if you want sample data included, or ignore it if you want auto-seed on server startup
+*.db-journal
