@@ -105,7 +105,7 @@ export function Optimization({ onSelectTab }) {
         <div>
           <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
             <h1>Inventory Optimization Engine</h1>
-            <span className="badge badge-purple">Viva Ready</span>
+            <span className="badge badge-purple">Algorithmic Engine</span>
           </div>
           <p>Deterministic mathematical replenishment models, Reorder Point (ROP) tracking, and sales velocity classification</p>
         </div>
@@ -127,11 +127,11 @@ export function Optimization({ onSelectTab }) {
         </div>
       </div>
 
-      {/* Formula Presentation Box for Viva & Project Evaluation */}
+      {/* Formula Presentation Box */}
       <div className="formula-card">
         <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '10px' }}>
           <Sparkles size={22} color="#a5b4fc" />
-          <h2>Mathematical Optimization Model (Viva Explainer)</h2>
+          <h2>Deterministic Optimization Model</h2>
         </div>
         <p>
           To eliminate stockouts and avoid excess working capital lock-up, the system continuously evaluates each product's sales velocity against supplier fulfillment latency:

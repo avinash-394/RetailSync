@@ -1,7 +1,7 @@
 {
   "name": "retail-inventory-management-system",
   "version": "1.0.0",
-  "description": "Optimized Retail Inventory Management System (College Capstone Project guided by HCL)",
+  "description": "RetailSync - Enterprise-grade Retail Inventory & Supply Chain Optimization Platform",
   "scripts": {
     "backend": "npm --prefix backend start",
     "backend:dev": "npm --prefix backend run dev",
@@ -18,6 +18,6 @@
     "express",
     "sqlite"
   ],
-  "author": "3rd Year B.Tech CSE (Guided by HCL Trainee)",
+  "author": "Avinash",
   "license": "ISC"
 }

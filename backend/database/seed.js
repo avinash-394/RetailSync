@@ -1,6 +1,6 @@
 /**
  * Database Seeder
- * Populates realistic sample data for student demo & evaluation.
+ * Populates realistic sample retail inventory, supplier, and sales data for demonstration.
  */
 
 const bcrypt = require('bcryptjs');

@@ -9,13 +9,17 @@ import {
   CheckCircle,
   XCircle,
   FileSpreadsheet,
-  Search
+  Search,
+  Trash2,
+  RotateCcw
 } from 'lucide-react';
 import { api } from '../api';
 import { Badge } from '../components/Badge';
 import { Modal } from '../components/Modal';
+import { useAuth } from '../context/AuthContext';
 
 export function Inventory() {
+  const { isAdmin } = useAuth();
   const [overview, setOverview] = useState(null);
   const [transactions, setTransactions] = useState([]);
   const [products, setProducts] = useState([]);
@@ -100,6 +104,26 @@ export function Inventory() {
     );
   });
 
+  const handleClearAuditLog = async () => {
+    if (!window.confirm("⚠️ CAUTION: Are you sure you want to clear the entire inventory audit log history?")) return;
+    try {
+      await api.clearTransactions();
+      loadInventoryData();
+    } catch (err) {
+      alert('Failed to clear audit log: ' + err.message);
+    }
+  };
+
+  const handleResetDemo = async () => {
+    if (!window.confirm("🔄 Restore factory demo dataset? This will regenerate the full realistic retail catalog with 21 products, 4 suppliers, and 28 sales.")) return;
+    try {
+      await api.resetDemoData();
+      loadInventoryData();
+    } catch (err) {
+      alert('Failed to reset demo data: ' + err.message);
+    }
+  };
+
   return (
     <div>
       {/* Header */}
@@ -109,6 +133,29 @@ export function Inventory() {
           <p>Real-time stock balance, manual warehouse adjustments, and end-to-end transaction logging</p>
         </div>
         <div className="page-header-actions">
+          {isAdmin && (
+            <>
+              <button
+                className="btn btn-outline"
+                onClick={handleResetDemo}
+                style={{ color: '#4f46e5', borderColor: '#c7d2fe' }}
+                title="Restore full demo dataset"
+              >
+                <RotateCcw size={15} />
+                <span>Restore Demo Data</span>
+              </button>
+              {transactions.length > 0 && (
+                <button
+                  className="btn btn-outline"
+                  onClick={handleClearAuditLog}
+                  style={{ color: '#ef4444', borderColor: '#fca5a5' }}
+                >
+                  <Trash2 size={15} />
+                  <span>Clear Audit Log</span>
+                </button>
+              )}
+            </>
+          )}
           <button
             className="btn btn-primary"
             onClick={() => {

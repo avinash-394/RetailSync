@@ -1,8 +1,8 @@
-# Project Report: Optimized Retail Inventory Management System (RetailSync)
+# Technical Specification & System Architecture: RetailSync
 
-**Degree:** Bachelor of Technology (B.Tech) in Computer Science & Engineering (3rd Year Capstone)  
-**Project Track:** Enterprise Web Application Development & Inventory Optimization  
-**Industry Guidance:** Under Mentorship of an HCL Trainee  
+**System:** Optimized Retail Inventory Management System (RetailSync)  
+**Project Type:** Full-Stack Enterprise Web Application & Inventory Optimization Engine  
+**Author:** Avinash  
 
 ---
 
@@ -73,7 +73,7 @@ The application adopts the **3-Tier MVC-style Web Architecture**:
 
 ## 5. Mathematical Optimization Formulation
 
-A critical academic contribution of this capstone is the implementation of deterministic supply chain formulas:
+A core algorithmic component of RetailSync is the implementation of deterministic supply chain formulas:
 
 ### Formulation 1: Average Daily Sales (ADS)
 $$\text{ADS} = \frac{\sum_{t=1}^{T} \text{Units Sold}_t}{T}$$
@@ -109,7 +109,7 @@ $$\text{Recommended Order Quantity} = \max(0, \text{Target Level} - \text{Curren
 
 ---
 
-## 7. Viva Voce Preparation (Frequently Asked Questions)
+## 7. Architecture Deep-Dive & Technical FAQ
 
 ### Q1: Why did you choose React and Node.js for this project?
 **Answer:** React offers a modular, component-driven architecture that makes building reactive interfaces (such as live POS carts and dynamic dashboards) fast and maintainable. Node.js with Express provides a lightweight, non-blocking asynchronous event-driven runtime ideal for I/O heavy REST API micro-services.
@@ -129,4 +129,4 @@ $$\text{Recommended Order Quantity} = \max(0, \text{Target Level} - \text{Curren
 ---
 
 ## 8. Conclusion
-The **Optimized Retail Inventory Management System (RetailSync)** successfully addresses the operational bottlenecks of retail store administration. By combining practical software engineering practices, role-based security, automated invoice printing, and mathematically grounded inventory replenishment algorithms, the project demonstrates a complete, defensible, and industry-aligned capstone suitable for a 3rd-year B.Tech CSE evaluation.
+The **Optimized Retail Inventory Management System (RetailSync)** successfully addresses the operational bottlenecks of retail store administration. By combining modern software engineering practices, role-based security, automated invoice generation, and mathematically grounded inventory replenishment algorithms, the platform delivers a complete, production-ready, and resilient standalone inventory management solution.

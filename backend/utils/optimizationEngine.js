@@ -1,8 +1,9 @@
+
 /**
  * Inventory Optimization Engine
  *
  * Implements deterministic inventory optimization algorithms tailored for retail stores.
- * Designed to be mathematically sound, transparent, and easy to explain in academic project viva.
+ * Designed to be mathematically sound, transparent, and robust for production supply chain analysis.
  *
  * Key Concepts:
  * 1. Average Daily Sales (ADS) = Total units sold in window (e.g., 30 days) / Days

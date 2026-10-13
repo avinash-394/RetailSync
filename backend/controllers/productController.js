@@ -359,13 +359,31 @@ function createCategory(req, res) {
   }
 }
 
+// DELETE /api/products/all (Admin only)
+function deleteAllProducts(req, res) {
+  try {
+    db.exec(`
+      DELETE FROM inventory_transactions;
+      DELETE FROM sale_items;
+      DELETE FROM purchase_items;
+      DELETE FROM products;
+    `);
+    return res.json({ success: true, message: 'All products and associated line items deleted successfully.' });
+  } catch (err) {
+    console.error('deleteAllProducts error:', err);
+    return res.status(500).json({ success: false, message: 'Failed to delete all products.' });
+  }
+}
+
 module.exports = {
   getProducts,
   getProductById,
   createProduct,
   updateProduct,
   deleteProduct,
+  deleteAllProducts,
   getCategories,
   createCategory,
   calculateStatus
 };
+
