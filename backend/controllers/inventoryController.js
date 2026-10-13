@@ -178,8 +178,34 @@ function getTransactions(req, res) {
   }
 }
 
+// DELETE /api/inventory/transactions/all (Admin only)
+function clearTransactions(req, res) {
+  try {
+    db.exec('DELETE FROM inventory_transactions;');
+    return res.json({ success: true, message: 'Inventory audit transactions cleared successfully.' });
+  } catch (err) {
+    console.error('clearTransactions error:', err);
+    return res.status(500).json({ success: false, message: 'Failed to clear transactions.' });
+  }
+}
+
+// POST /api/inventory/reset-demo (Admin only)
+function resetDemoData(req, res) {
+  try {
+    const { seedDatabase } = require('../database/seed');
+    seedDatabase();
+    return res.json({ success: true, message: 'Factory demo dataset (21 products, 4 suppliers, sales, purchases) restored successfully!' });
+  } catch (err) {
+    console.error('resetDemoData error:', err);
+    return res.status(500).json({ success: false, message: 'Failed to restore demo data.' });
+  }
+}
+
 module.exports = {
   getInventoryOverview,
   adjustStock,
-  getTransactions
+  getTransactions,
+  clearTransactions,
+  resetDemoData
 };
+

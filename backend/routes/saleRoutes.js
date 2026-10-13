@@ -9,5 +9,6 @@ router.use(authenticateToken);
 router.get('/', saleController.getSales);
 router.get('/:id', saleController.getSaleById);
 router.post('/', authorizeRoles('ADMIN', 'STAFF'), saleController.createSale);
+router.delete('/all', authorizeRoles('ADMIN'), saleController.deleteAllSales);
 
 module.exports = router;

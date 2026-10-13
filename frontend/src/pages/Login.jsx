@@ -132,7 +132,7 @@ export function Login() {
           </button>
         </form>
 
-        {/* Demo Fast Logins for Evaluator & Viva */}
+        {/* Quick Demo Access Credentials */}
         <div style={{
           marginTop: '28px',
           paddingTop: '20px',
@@ -140,7 +140,7 @@ export function Login() {
           textAlign: 'center'
         }}>
           <div style={{ fontSize: '12px', fontWeight: 700, color: 'var(--text-muted)', textTransform: 'uppercase', letterSpacing: '0.05em', marginBottom: '12px' }}>
-            Quick Demo Accounts (Evaluation Viva)
+            Quick Demo Accounts
           </div>
           <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '10px' }}>
             <button

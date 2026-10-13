@@ -9,5 +9,7 @@ router.use(authenticateToken);
 router.get('/overview', inventoryController.getInventoryOverview);
 router.get('/transactions', inventoryController.getTransactions);
 router.post('/adjust', authorizeRoles('ADMIN', 'STAFF'), inventoryController.adjustStock);
+router.delete('/transactions/all', authorizeRoles('ADMIN'), inventoryController.clearTransactions);
+router.post('/reset-demo', authorizeRoles('ADMIN'), inventoryController.resetDemoData);
 
 module.exports = router;

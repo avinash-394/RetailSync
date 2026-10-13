@@ -9,5 +9,6 @@ router.use(authenticateToken);
 router.get('/', purchaseController.getPurchases);
 router.get('/:id', purchaseController.getPurchaseById);
 router.post('/', authorizeRoles('ADMIN', 'STAFF'), purchaseController.createPurchase);
+router.delete('/all', authorizeRoles('ADMIN'), purchaseController.deleteAllPurchases);
 
 module.exports = router;

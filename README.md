@@ -1,8 +1,8 @@
 # RetailSync: Optimized Retail Inventory Management System
 
-> **A Practical Software Engineering Capstone Project**  
-> **Target Audience:** 3rd-Year B.Tech Computer Science & Engineering (CSE)  
-> **Development Guidance:** Under the mentorship of an HCL Trainee  
+> **Full-Stack Retail Inventory Management & Supply Chain Optimization Platform**  
+> **Architecture:** 3-Tier Enterprise Web System (React + Node.js/Express + SQLite/MySQL + JWT Authentication)  
+> **Core Innovation:** Deterministic Reorder Point (ROP) Algorithm & Supply Chain Analytics  
 > **Tech Stack:** React (Vite) + Node.js (Express) + Relational Database (SQLite / MySQL) + JWT Authentication  
 
 ---
@@ -40,14 +40,14 @@ npm run dev      # Starts Vite React client on http://localhost:3000
 
 ---
 
-## 🔑 Demo Login Credentials (For Viva & Presentation)
+## 🔑 Demo Credentials & Quick Access
 
 | Role | Email | Password | Permissions |
 | :--- | :--- | :--- | :--- |
 | **Admin Officer** | `admin@retail.com` | `admin123` | Full access (CRUD Products, Suppliers, POs, Sales, User Management, Reports) |
 | **Staff Operator** | `staff@retail.com` | `staff123` | Counter operations (POS Billing, Stock Adjustments, Viewing Catalog) |
 
-*Note: The login screen also features 1-click **"Quick Demo Accounts"** buttons to auto-populate credentials during presentations.*
+*Note: The login screen also features 1-click **"Quick Demo Accounts"** buttons to auto-populate credentials for rapid evaluation.*
 
 ---
 
@@ -173,9 +173,9 @@ erDiagram
 
 ---
 
-## 🧠 Optimization Algorithm (Viva Explainer)
+## 🧠 Inventory Optimization & Reorder Point (ROP) Algorithm
 
-The core feature of this system is the **Deterministic Inventory Replenishment Model**. It replaces guesswork with mathematically grounded calculations that are clear, transparent, and defensible in viva examinations.
+The core feature of this system is the **Deterministic Inventory Replenishment Model**. It replaces guesswork with mathematically grounded calculations that are clear, transparent, and proven in modern retail supply chain systems.
 
 ### 1. Average Daily Sales (ADS)
 $$\text{ADS} = \frac{\sum_{i=1}^{N} \text{Units Sold in Day } i}{N}$$

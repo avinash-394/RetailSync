@@ -159,6 +159,16 @@ export function Products() {
     }
   };
 
+  const handleDeleteAll = async () => {
+    if (!window.confirm("⚠️ CAUTION: Are you sure you want to delete ALL products and associated transaction records? This action cannot be undone.")) return;
+    try {
+      await api.deleteAllProducts();
+      loadData();
+    } catch (err) {
+      alert('Failed to delete all products: ' + err.message);
+    }
+  };
+
   return (
     <div>
       {/* Header */}
@@ -168,6 +178,16 @@ export function Products() {
           <p>Maintain SKU specifications, retail pricing, supplier links, and minimum thresholds</p>
         </div>
         <div className="page-header-actions">
+          {isAdmin && products.length > 0 && (
+            <button
+              className="btn btn-outline"
+              onClick={handleDeleteAll}
+              style={{ color: '#ef4444', borderColor: '#fca5a5' }}
+            >
+              <Trash2 size={15} />
+              <span>Delete All Products</span>
+            </button>
+          )}
           <button className="btn btn-primary" onClick={handleOpenAddModal}>
             <Plus size={16} />
             <span>Add New Product</span>

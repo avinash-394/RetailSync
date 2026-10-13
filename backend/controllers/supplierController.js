@@ -146,10 +146,28 @@ function deleteSupplier(req, res) {
   }
 }
 
+// DELETE /api/suppliers/all (Admin only)
+function deleteAllSuppliers(req, res) {
+  try {
+    db.exec(`
+      UPDATE products SET supplier_id = NULL;
+      DELETE FROM purchase_items;
+      DELETE FROM purchases;
+      DELETE FROM suppliers;
+    `);
+    return res.json({ success: true, message: 'All suppliers and linked purchase records deleted successfully.' });
+  } catch (err) {
+    console.error('deleteAllSuppliers error:', err);
+    return res.status(500).json({ success: false, message: 'Failed to delete all suppliers.' });
+  }
+}
+
 module.exports = {
   getSuppliers,
   getSupplierById,
   createSupplier,
   updateSupplier,
-  deleteSupplier
+  deleteSupplier,
+  deleteAllSuppliers
 };
+

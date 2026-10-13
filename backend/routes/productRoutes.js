@@ -16,6 +16,7 @@ router.get('/', productController.getProducts);
 router.get('/:id', productController.getProductById);
 router.post('/', authorizeRoles('ADMIN', 'STAFF'), productController.createProduct);
 router.put('/:id', authorizeRoles('ADMIN', 'STAFF'), productController.updateProduct);
+router.delete('/all', authorizeRoles('ADMIN'), productController.deleteAllProducts);
 router.delete('/:id', authorizeRoles('ADMIN'), productController.deleteProduct);
 
 module.exports = router;

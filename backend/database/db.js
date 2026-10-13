@@ -1,6 +1,6 @@
 /**
  * Database Module (SQLite via Node.js native node:sqlite)
- * Zero configuration required, perfectly portable for student demonstrations.
+ * Zero external configuration required, high-performance embedded relational storage.
  */
 const { DatabaseSync } = require('node:sqlite');
 const path = require('path');

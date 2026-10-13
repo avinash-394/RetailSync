@@ -124,6 +124,16 @@ export function Suppliers({ onSelectTab }) {
     }
   };
 
+  const handleDeleteAll = async () => {
+    if (!window.confirm("⚠️ CAUTION: Are you sure you want to delete ALL suppliers and linked purchase records? This action cannot be undone.")) return;
+    try {
+      await api.deleteAllSuppliers();
+      loadSuppliers();
+    } catch (err) {
+      alert('Failed to delete all suppliers: ' + err.message);
+    }
+  };
+
   return (
     <div>
       {/* Header */}
@@ -133,6 +143,16 @@ export function Suppliers({ onSelectTab }) {
           <p>Vendor directories, procurement channels, lead-time contacts, and purchase volumes</p>
         </div>
         <div className="page-header-actions">
+          {isAdmin && suppliers.length > 0 && (
+            <button
+              className="btn btn-outline"
+              onClick={handleDeleteAll}
+              style={{ color: '#ef4444', borderColor: '#fca5a5' }}
+            >
+              <Trash2 size={15} />
+              <span>Delete All Suppliers</span>
+            </button>
+          )}
           <button className="btn btn-primary" onClick={handleOpenAdd}>
             <Plus size={16} />
             <span>Add Supplier</span>

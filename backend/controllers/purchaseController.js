@@ -227,8 +227,25 @@ function createPurchase(req, res) {
   }
 }
 
+// DELETE /api/purchases/all (Admin only)
+function deleteAllPurchases(req, res) {
+  try {
+    db.exec(`
+      DELETE FROM purchase_items;
+      DELETE FROM purchases;
+      DELETE FROM inventory_transactions WHERE type = 'PURCHASE';
+    `);
+    return res.json({ success: true, message: 'All purchase records have been deleted.' });
+  } catch (err) {
+    console.error('deleteAllPurchases error:', err);
+    return res.status(500).json({ success: false, message: 'Failed to delete all purchases.' });
+  }
+}
+
 module.exports = {
   getPurchases,
   getPurchaseById,
-  createPurchase
+  createPurchase,
+  deleteAllPurchases
 };
+

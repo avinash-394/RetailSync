@@ -265,8 +265,25 @@ function createSale(req, res) {
   }
 }
 
+// DELETE /api/sales/all (Admin only)
+function deleteAllSales(req, res) {
+  try {
+    db.exec(`
+      DELETE FROM sale_items;
+      DELETE FROM sales;
+      DELETE FROM inventory_transactions WHERE type = 'SALE';
+    `);
+    return res.json({ success: true, message: 'All sales transactions and invoices deleted successfully.' });
+  } catch (err) {
+    console.error('deleteAllSales error:', err);
+    return res.status(500).json({ success: false, message: 'Failed to delete all sales.' });
+  }
+}
+
 module.exports = {
   getSales,
   getSaleById,
-  createSale
+  createSale,
+  deleteAllSales
 };
+

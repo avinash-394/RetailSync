@@ -15,8 +15,10 @@ import {
 import { api } from '../api';
 import { Badge } from '../components/Badge';
 import { Modal } from '../components/Modal';
+import { useAuth } from '../context/AuthContext';
 
 export function Sales() {
+  const { isAdmin } = useAuth();
   const [sales, setSales] = useState([]);
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -182,6 +184,16 @@ export function Sales() {
     window.print();
   };
 
+  const handleDeleteAll = async () => {
+    if (!window.confirm("⚠️ CAUTION: Are you sure you want to delete ALL sales transactions and invoices? This action cannot be undone.")) return;
+    try {
+      await api.deleteAllSales();
+      loadData();
+    } catch (err) {
+      alert('Failed to delete all sales: ' + err.message);
+    }
+  };
+
   return (
     <div>
       {/* Header */}
@@ -191,6 +203,16 @@ export function Sales() {
           <p>Counter point-of-sale billing, digital invoice generation, and real-time inventory decrement</p>
         </div>
         <div className="page-header-actions">
+          {isAdmin && sales.length > 0 && (
+            <button
+              className="btn btn-outline"
+              onClick={handleDeleteAll}
+              style={{ color: '#ef4444', borderColor: '#fca5a5' }}
+            >
+              <Trash2 size={15} />
+              <span>Delete All Sales</span>
+            </button>
+          )}
           <button className="btn btn-primary" onClick={handleOpenCheckout}>
             <ShoppingCart size={16} />
             <span>Launch POS Checkout</span>
@@ -614,8 +636,8 @@ export function Sales() {
 
             {/* Receipt Footer */}
             <div style={{ textAlign: 'center', marginTop: '18px', borderTop: '1px dashed #cbd5e1', paddingTop: '10px', fontSize: '11px', color: 'var(--text-muted)' }}>
-              Thank you for shopping at Apex Retail Mart!
-              <div style={{ fontSize: '9px', marginTop: '2px' }}>Software Powered by RetailSync System &bull; College Capstone Project</div>
+              Thank you for shopping with us!
+              <div style={{ fontSize: '9px', marginTop: '2px' }}>Software Powered by RetailSync System &bull; Enterprise Inventory Management Platform</div>
             </div>
           </div>
 

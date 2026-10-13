@@ -12,8 +12,10 @@ import {
 import { api } from '../api';
 import { Badge } from '../components/Badge';
 import { Modal } from '../components/Modal';
+import { useAuth } from '../context/AuthContext';
 
 export function Purchases() {
+  const { isAdmin } = useAuth();
   const [purchases, setPurchases] = useState([]);
   const [suppliers, setSuppliers] = useState([]);
   const [products, setProducts] = useState([]);
@@ -150,6 +152,16 @@ export function Purchases() {
     }
   };
 
+  const handleDeleteAll = async () => {
+    if (!window.confirm("⚠️ CAUTION: Are you sure you want to delete ALL purchase order records? This action cannot be undone.")) return;
+    try {
+      await api.deleteAllPurchases();
+      loadData();
+    } catch (err) {
+      alert('Failed to delete all purchases: ' + err.message);
+    }
+  };
+
   return (
     <div>
       {/* Header */}
@@ -159,6 +171,16 @@ export function Purchases() {
           <p>Procurement documentation, vendor invoices, unit cost tracking, and automatic stock receiving</p>
         </div>
         <div className="page-header-actions">
+          {isAdmin && purchases.length > 0 && (
+            <button
+              className="btn btn-outline"
+              onClick={handleDeleteAll}
+              style={{ color: '#ef4444', borderColor: '#fca5a5' }}
+            >
+              <Trash2 size={15} />
+              <span>Delete All POs</span>
+            </button>
+          )}
           <button className="btn btn-primary" onClick={handleOpenCreateModal}>
             <Plus size={16} />
             <span>Create Purchase Order</span>
